@@ -1,5 +1,6 @@
 package ir.ac.kntu;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Customer extends Thing implements Cloneable{
@@ -19,6 +20,25 @@ public class Customer extends Thing implements Cloneable{
             this.nationalCode = nationalCode;
         }
     }
+
+    public static Customer searchByName(ArrayList<Customer> customers,String name) {
+        for (Customer customer : customers) {
+            if (customer.getName().equals(name)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    public static Customer searchByNationalCode(ArrayList<Customer> customers,String nationalCode) {
+        for (Customer customer : customers) {
+            if (customer.getNationalCode().equals(nationalCode)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
 
     @Override
     public boolean equals(Object o) {

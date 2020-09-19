@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import java.rmi.UnexpectedException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Objects;
 
@@ -46,6 +47,15 @@ public class City extends Thing {
 
     public double dis(City city1){
         return Math.sqrt(Math.pow(city1.getX()-this.getX(), 2)+Math.pow(city1.getY()-this.getY(), 2));
+    }
+
+    public static City searchByName(ArrayList<City> cities, String name) {
+        for (City city : cities) {
+            if (city.getName().equals(name)) {
+                return city;
+            }
+        }
+        return null;
     }
 
 

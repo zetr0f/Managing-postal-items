@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Postage extends Thing implements Cloneable{
@@ -140,6 +141,62 @@ public class Postage extends Thing implements Cloneable{
     public void setCurrentPosition(City currentPosition) {
         this.currentPosition = currentPosition;
     }
+
+    public static ArrayList<Postage> searchByOrigin(ArrayList<Postage> postages, City origin)
+            throws CloneNotSupportedException {
+        ArrayList<Postage> updatedPostages = new ArrayList<>();
+        for (int i = 0; i < postages.size(); i++) {
+            if (postages.get(i).getOrigin().equals(origin)) {
+                updatedPostages.add(postages.get(i));
+            }
+        }
+        return updatedPostages;
+    }
+
+    public static ArrayList<Postage> searchByDestination(ArrayList<Postage> postages, City destination)
+            throws CloneNotSupportedException {
+        ArrayList<Postage> updatedPostages = new ArrayList<>();
+        for (int i = 0; i < postages.size(); i++) {
+            if (postages.get(i).getDestination().equals(destination)) {
+                updatedPostages.add(postages.get(i));
+            }
+        }
+        return updatedPostages;
+    }
+
+    public static ArrayList<Postage> searchByShippingMethod(ArrayList<Postage> postages, ShippingMethod shippingMethod)
+            throws CloneNotSupportedException {
+        ArrayList<Postage> updatedPostages = new ArrayList<>();
+        for (int i = 0; i < postages.size(); i++) {
+            if (postages.get(i).getShippingMethod().equals(shippingMethod)) {
+                updatedPostages.add(postages.get(i));
+            }
+        }
+        return updatedPostages;
+    }
+
+    public static ArrayList<Postage> searchByOrderStatus(ArrayList<Postage> postages, OrderStatus orderStatus)
+            throws CloneNotSupportedException {
+        ArrayList<Postage> updatedPostages = new ArrayList<>();
+        for (int i = 0; i < postages.size(); i++) {
+            if (postages.get(i).getOrderStatus().equals(orderStatus)) {
+                updatedPostages.add(postages.get(i));
+            }
+        }
+        return updatedPostages;
+    }
+
+    public static ArrayList<Postage> searchByCustomers(ArrayList<Postage> postages, Customer customer)
+            throws CloneNotSupportedException {
+        ArrayList<Postage> updatedPostages = new ArrayList<>();
+        for (int i = 0; i < postages.size(); i++) {
+            if (postages.get(i).getReceiver().equals(customer) || postages.get(i).getSender().equals(customer)) {
+                updatedPostages.add(postages.get(i));
+            }
+        }
+        return updatedPostages;
+    }
+
 
     @Override
     public boolean equals(Object o) {
