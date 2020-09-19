@@ -201,7 +201,7 @@ public class Date implements Cloneable{
         return firstFraction <= b && secondFraction > b;
     }
 
-    private int compareTo(Date date){
+    public int compareTo(Date date){
         if (date.getYear()!=this.getYear()) {
             return this.getYear() - date.getYear();
         } if (date.getMonth()!=this.getMonth()) {

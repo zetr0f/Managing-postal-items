@@ -28,6 +28,13 @@ public final class Validator {
         return (sum < 2 && check == sum) || (sum >= 2 && check + sum == 11);
     }
 
+    public static boolean checkWeight(double input){
+        if (input> 0){
+            return true;
+        }
+        return false;
+    }
+
     private Validator() {
     }
 }

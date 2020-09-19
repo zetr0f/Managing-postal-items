@@ -22,15 +22,15 @@ public class Postage extends Thing implements Cloneable{
             , Date deliveryTime,Date receiptTime, ShippingMethod shippingMethod, PostMethod postMethod)
             throws CloneNotSupportedException {
         super(name);
-        this.sender = sender;
-        this.receiver = receiver;
-        this.origin = origin;
-        this.destination = destination;
-        this.weight = weight;
-        this.deliveryTime = deliveryTime;
-        this.receiptTime = receiptTime;
-        this.shippingMethod = shippingMethod;
-        this.postMethod = postMethod;
+        setSender(sender);
+        setReceiver(receiver);
+        setOrigin(origin);
+        setDestination(destination);
+        setWeight(weight);
+        setDeliveryTime(deliveryTime);
+        setReceiptTime(receiptTime);
+        setShippingMethod(shippingMethod);
+        setPostMethod(postMethod);
         orderStatus = OrderStatus.UNSENT;
         currentPosition = origin.clone();
         dis = City.dis(origin, destination);
@@ -51,7 +51,9 @@ public class Postage extends Thing implements Cloneable{
     }
 
     public void setWeight(double weight) {
-        this.weight = weight;
+        if (Validator.checkWeight(weight)) {
+            this.weight = weight;
+        }
     }
 
     public double getDis() {
@@ -115,7 +117,9 @@ public class Postage extends Thing implements Cloneable{
     }
 
     public void setShippingMethod(ShippingMethod shippingMethod) {
-        this.shippingMethod = shippingMethod;
+        if (!(dis > 500 && shippingMethod.equals(ShippingMethod.LAND))) {
+            this.shippingMethod = shippingMethod;
+        }
     }
 
     public PostMethod getPostMethod() {
